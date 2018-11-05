@@ -41,11 +41,10 @@ def load_data():
 
 
 def main():
-
     # ================================================================================ #
     # Hyper parameters.
     # ================================================================================ #
-    num_epochs = 25
+    num_epochs = 100
     batches_num = 5
 
     # ================================================================================ #
@@ -69,7 +68,7 @@ def main():
     pool_3 = tf.nn.max_pool(value=conv_3, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding="SAME")
     pool_3_flatten = tf.reshape(pool_3, [-1, 4 * 4 * 20])
 
-    output = tf.layers.dense(inputs=pool_3_flatten, units=10, activation=tf.nn.relu)
+    output = tf.layers.dense(inputs=pool_3_flatten, units=10, activation=tf.identity)
 
     cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=labels_encoded, logits=output))
     optimizer = tf.train.AdamOptimizer().minimize(cost)
