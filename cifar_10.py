@@ -44,7 +44,7 @@ def main():
     # ================================================================================ #
     # Hyper parameters.
     # ================================================================================ #
-    num_epochs = 100
+    num_epochs = 500
     batches_num = 5
 
     # ================================================================================ #
@@ -58,13 +58,13 @@ def main():
     net_input = tf.placeholder(tf.float32, shape=(None, 32, 32, 3), name="input")
     labels_encoded = tf.placeholder(tf.float64, shape=(None, 10), name="labels_encoded")
 
-    conv_1 = tf.layers.conv2d(inputs=net_input, filters=16, padding="SAME", kernel_size=[5, 5], activation="relu")
+    conv_1 = tf.layers.conv2d(inputs=net_input, filters=16, padding="SAME", kernel_size=[5, 5], activation=tf.nn.relu)
     pool_1 = tf.nn.max_pool(value=conv_1, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding="SAME")
 
-    conv_2 = tf.layers.conv2d(inputs=pool_1, filters=20, padding="SAME", kernel_size=[5, 5], activation="relu")
+    conv_2 = tf.layers.conv2d(inputs=pool_1, filters=20, padding="SAME", kernel_size=[5, 5], activation=tf.nn.relu)
     pool_2 = tf.nn.max_pool(value=conv_2, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding="SAME")
 
-    conv_3 = tf.layers.conv2d(inputs=pool_2, filters=20, padding="SAME", kernel_size=[5, 5], activation="relu")
+    conv_3 = tf.layers.conv2d(inputs=pool_2, filters=20, padding="SAME", kernel_size=[5, 5], activation=tf.nn.relu)
     pool_3 = tf.nn.max_pool(value=conv_3, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding="SAME")
     pool_3_flatten = tf.reshape(pool_3, [-1, 4 * 4 * 20])
 
