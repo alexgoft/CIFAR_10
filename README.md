@@ -1,2 +1,2 @@
 # CIFAR_10
-Simple CNN implemented with tensorflow and trained on SIFAR_10 database
+Simple CNN implemented with tensorflow and trained on CIFAR_10 database
